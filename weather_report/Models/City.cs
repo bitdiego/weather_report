@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace weather_report.Models
 {
-    internal class City
+    public class City
     {
         public int Id { get; set; }
         public Guid Uuid { get; set; }

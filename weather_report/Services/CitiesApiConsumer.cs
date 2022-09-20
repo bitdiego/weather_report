@@ -10,9 +10,9 @@ using weather_report.Models;
 
 namespace weather_report.Services
 {
-    internal class CitiesApiConsumer
+    public class CitiesApiConsumer
     {
-        IEnumerable<City> cities;
+        public IEnumerable<City> cities;
         //private readonly IWeatherApiService _service;
 
         public CitiesApiConsumer()
