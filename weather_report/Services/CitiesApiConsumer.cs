@@ -21,7 +21,17 @@ namespace weather_report.Services
         }
         public async Task GetCities()
         {
-            using (var client = new HttpClient())
+            string content = await RequestHandler.SendGetRequestAsync(Globals.TUI_CITIES_URL);
+            if (!String.IsNullOrEmpty(content))
+            {
+                CityDataParser <City> parser = new CityDataParser<City>();
+                cities = parser.GetDataListFromString(content);
+            }
+            else
+            {
+                throw new ArgumentNullException("Error: null data from serer");
+            }
+            /*using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -43,7 +53,7 @@ namespace weather_report.Services
                     throw new HttpRequestException("Server error response");
                     //Console.WriteLine("Internal server Error");
                 }
-            }
+            }*/
         }
     }
 }
