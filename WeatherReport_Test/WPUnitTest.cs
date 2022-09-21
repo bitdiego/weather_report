@@ -25,7 +25,7 @@ namespace WeatherReport_Test
         public async Task GetCitiesApi_Test()
         {
             await testConsumer.GetCities();
-            var cityList = testConsumer.cities as List<City>;
+            var cityList = testConsumer.EnumCities() as List<City>;
             Assert.True(cityList != null && cityList.Count > 0);
 
         }

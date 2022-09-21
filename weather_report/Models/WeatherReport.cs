@@ -26,8 +26,8 @@ namespace weather_report.Models
         public double Daily_will_it_snow { get; set; }
         public double Daily_chance_of_snow { get; set; }
         public double Uv { get; set; }
-        public string Text { get; set; }
-        public string Icon { get; set; }
+        public string Text { get; set; } = "";
+        public string Icon { get; set; } = "";
         public int Code { get; set; }
     }
 }

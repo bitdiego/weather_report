@@ -12,7 +12,7 @@ namespace weather_report.Services
     {
         public void LogCity(City city)
         {
-            Console.WriteLine(city);
+            Console.WriteLine(city.Name + " " + city.Latitude + " " + city.Longitude + " " + city.Country.Name);
         }
 
         public void LogCities(IEnumerable<City> cities)

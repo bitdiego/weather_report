@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace weather_report.Interfaces
 {
-    public interface IStringDataParser<T> where T : class
+    public interface IStringDataParser<T> where T : new()
     {
         List<T> GetDataListFromString(string content);
     }
