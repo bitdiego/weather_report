@@ -10,6 +10,7 @@ namespace weather_report.Services
 {
     public class ConsoleLogger : ILogger
     {
+        private readonly string dummyString = "Processed city ";
         public void LogCity(City city)
         {
             Console.WriteLine(city.Name + " " + city.Latitude + " " + city.Longitude + " " + city.Country.Name);
@@ -22,9 +23,35 @@ namespace weather_report.Services
                 Console.WriteLine(city.Name +" "+ city.Latitude +" " +city.Longitude + " "+city.Country.Name);
             }
         }
-        public void LogForecast()
+        public void LogForecast(string cityName, IEnumerable<WeatherReport> forecasts)
         {
-            throw new NotImplementedException();
+            int nItems = forecasts.Count();
+            int counter = 0;
+            Console.Write(dummyString + cityName);
+            Console.Write(" | ");
+            foreach (WeatherReport weather in forecasts)
+            {
+                Console.Write(weather.Text);
+                if (counter < nItems - 1)
+                {
+                    Console.Write(" - ");
+                }
+                ++counter;
+            }
+
+
+            /*var xfList = forecasts.ToList();
+            
+            for(int i=0; i< xfList.Count(); i++)
+            {
+                Console.Write(xfList[i].Text);
+                
+                if (i < xfList.Count() - 1) 
+                {
+                    Console.Write(" - ");
+                }
+            }*/
+            Console.WriteLine();
         }
     }
 }

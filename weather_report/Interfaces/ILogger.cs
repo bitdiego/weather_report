@@ -11,6 +11,6 @@ namespace weather_report.Interfaces
     {
         void LogCity(City city);
         void LogCities(IEnumerable<City> cities);
-        void LogForecast();
+        void LogForecast(string cityName, IEnumerable<WeatherReport> forecasts);
     }
 }
