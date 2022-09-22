@@ -10,14 +10,13 @@ using weather_report.Interfaces;
 
 namespace weather_report.Services
 {
-    public class DynamicDataParser<T> : IStringDataParser<T> where T : new()
+    public class DynamicDataParser<T> : IStringDataParser<T> where T : class, new()
     {
         public List<T>? Data { get; set; }
         public List<T> GetDataListFromString(string content)
         {
             Data = new List<T>();
             dynamic obj = JsonConvert.DeserializeObject<dynamic>(content);
-            //cityName = Convert.ToString(obj["location"]["name"]);
             var forecast = obj["forecast"];
             var days = obj["forecast"]["forecastday"];
 
@@ -50,21 +49,10 @@ namespace weather_report.Services
 
         private static void SetPropertyValue(string key, JValue value, T wp)
         {
-            var _keyName = key.Substring(0, 1).ToUpper() + key.Substring(1);
+            var _keyName = key.Capitalize();
             PropertyInfo prop = wp.GetType().GetProperty(_keyName);
-            var propertyName = prop.PropertyType.Name;
-            if (propertyName == "Double")
-            {
-                prop.SetValue(wp, Convert.ToDouble(value), null);
-            }
-            else if (propertyName == "String")
-            {
-                prop.SetValue(wp, Convert.ToString(value), null);
-            }
-            else if (propertyName == "Int32")
-            {
-                prop.SetValue(wp, Convert.ToInt32(value), null);
-            }
+
+            prop.SetValue(wp, Convert.ChangeType(value, prop.PropertyType));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace weather_report.Services
                 }
                 else
                 {
-                    throw new HttpRequestException("Server error response");
+                    throw new HttpRequestException("Server error response: please check your API key");
                 }
             }
         }

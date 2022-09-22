@@ -11,9 +11,11 @@ namespace weather_report.Services
     public class WeatherApiConsumer
     {
         private IEnumerable<WeatherReport> weatherReportList;
+        private readonly IStringDataParser<WeatherReport> _parser;
 
-        public WeatherApiConsumer()
+        public WeatherApiConsumer(IStringDataParser<WeatherReport> parser)
         {
+            _parser = parser;
             weatherReportList = new List<WeatherReport>();
         }
 
@@ -23,8 +25,8 @@ namespace weather_report.Services
             string weatherResponse = await RequestHandler.SendGetRequestAsync(uri);
             if (!String.IsNullOrEmpty(weatherResponse))
             {
-                IStringDataParser<WeatherReport> wrParser = new DynamicDataParser<WeatherReport>();
-                weatherReportList = wrParser.GetDataListFromString(weatherResponse);
+                //IStringDataParser<WeatherReport> wrParser = new DynamicDataParser<WeatherReport>();
+                weatherReportList = _parser.GetDataListFromString(weatherResponse);
             }
             else
             {
@@ -34,11 +36,11 @@ namespace weather_report.Services
 
         public IEnumerable<WeatherReport> EnumForecast()
         {
-            return weatherReportList;
-            /*foreach (var wr in weatherReportList)
+            //return weatherReportList;
+            foreach (var wr in weatherReportList)
             {
                 yield return wr;
-            }*/
+            }
         }
     }
 }

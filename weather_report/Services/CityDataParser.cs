@@ -8,7 +8,7 @@ using weather_report.Interfaces;
 
 namespace weather_report.Services
 {
-    public class CityDataParser<T> : IStringDataParser<T> where T : new()
+    public class CityDataParser<T> : IStringDataParser<T> where T : class, new()
     {
         public List<T>? Data { get; set; }
         public List<T> GetDataListFromString(string content)

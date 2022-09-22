@@ -10,9 +10,10 @@ namespace WeatherReport_Test
     public class WPUnitTest : IDisposable
     {
         CitiesApiConsumer testConsumer;
+
         public WPUnitTest()
         {
-            testConsumer = new CitiesApiConsumer();
+            testConsumer = new CitiesApiConsumer(new CityDataParser<City>());
             Console.WriteLine("Inside SetUp Constructor");
         }
 
@@ -35,7 +36,7 @@ namespace WeatherReport_Test
         [InlineData(40.760886, -111.890922, 2)] //Salt Lake City
         public async Task SingleWeatherResponse_Test(double lat, double lon, int expected)
         {
-            WeatherApiConsumer weather = new WeatherApiConsumer();
+            WeatherApiConsumer weather = new WeatherApiConsumer(new DynamicDataParser<WeatherReport>());
             await weather.GetForecastByCityCoordinates(lat, lon);
             var foreList = weather.EnumForecast() as List<WeatherReport>;
             Assert.True(foreList!= null && foreList.Count == expected);
