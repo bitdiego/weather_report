@@ -1,11 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
+using System.Globalization;
 using weather_report;
 using weather_report.Interfaces;
 using weather_report.Models;
 using weather_report.Services;
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-
+/*
 if (args.Count() != 3)
 {
     Console.WriteLine("Error: wrong numbers of input parameters");
@@ -17,7 +19,7 @@ if(String.Compare(args[1], "--key", true) != 0)
     return;
 }
 Globals.WEATHER_API_KEY = args[2];
-/**/
+*/
 
 CitiesApiConsumer consumer = new CitiesApiConsumer(new CityDataParser<City>());
 try
