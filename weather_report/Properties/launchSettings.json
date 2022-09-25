@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "weather_report": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "commandLineArgs": "--key"
+    }
+  }
+}
