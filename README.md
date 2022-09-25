@@ -197,9 +197,15 @@ How to run WeatherReport project
 First Mode: clone and run
 1. Clone the project from github public repo https://github.com/bitdiego/weather_report.git in a local folder (for example, /weather_report_test)
 2. Navigate in an inner folder containing the weather_report.csproj file (it should be in a folder like ~/wr_test/weather_report/weather_report)
-3. Execute the following command: dotnet run weather_report --key <your valid weatherapi.com key>. If the api key is not entered or in case of invalid key, 
-an error message will be prompted 
+3. Execute the following command: dotnet run weather_report.
+4. When asked, enter a valid weatherapi key (my personal key,7ad1890196274ff89ea154035221209, expires on 26/09/2022)
+If the api key is not entered or in case of invalid key, an error message will be prompted
 ====================================================================================
 Second Mode: run as Docker container
 1. Start Docker for desktop
-2. Switch to Windows containers
+2. Switch to Linux containers, if not selected at start up
+3. Pull the project image from project repository https://hub.docker.com/repository/docker/bitdiego/weatherreport by using command docker pull bitdiego/weatherreport:latest
+4. Run command docker images: you should see a container named bitdiego/weatherreport
+5. Run docker run -it bitdiego/weatherreport
+6. When asked, enter a valid weatherapi key (my personal key,7ad1890196274ff89ea154035221209, expires on 26/09/2022)
+7. If eiter an empty string or an invalid key are entered, error messages will be prompted
