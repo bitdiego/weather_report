@@ -209,3 +209,8 @@ Second Mode: run as Docker container
 5. Run docker run -it bitdiego/weatherreport
 6. When asked, enter a valid weatherapi key (my personal key,7ad1890196274ff89ea154035221209, expires on 26/09/2022)
 7. If eiter an empty string or an invalid key are entered, error messages will be prompted
+====================================================================================
+Final remarks
+The project has been developed with Visual Studio CE 2022, with .NET Core framework 6
+It contains a xUnit test checking the correct data retrieving from /cities api, the functioning of weatherapi.com forecast api and a test to check what happens
+when an invalid api key is submitted. As my personal 'good api key' is going to expire, it is required to change it in WPUnitTest class 

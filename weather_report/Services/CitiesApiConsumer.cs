@@ -37,11 +37,11 @@ namespace weather_report.Services
 
         public IEnumerable<City> EnumCities()
         {
-            //return cities;
-            foreach (var city in cities)
+            return cities;
+            /*foreach (var city in cities)
             {
                 yield return city;
-            }
+            }*/
         }
     }
 }

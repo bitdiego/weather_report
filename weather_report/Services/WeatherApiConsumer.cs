@@ -36,11 +36,11 @@ namespace weather_report.Services
 
         public IEnumerable<WeatherReport> EnumForecast()
         {
-            //return weatherReportList;
-            foreach (var wr in weatherReportList)
+            return weatherReportList;
+           /* foreach (var wr in weatherReportList)
             {
                 yield return wr;
-            }
+            }*/
         }
     }
 }
